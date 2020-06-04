@@ -14,13 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-//    return view('welcome');
-return "Coders step";
+    return view('welcome');
+//return "Coders step";
 
 });
 
-Route::get('/contact', function () {
-//    return view('welcome');
-    return "contact Us";
+//Route::get('/contact', function () {
+//    return view('contact');
+//});
 
-});
+//Route::get('/about', function () {
+//    return view('about');
+//});
+
+// Another way
+Route::view('/' , 'welcome');
+Route::view('contact' , 'contact');
+Route::view('about' , 'about');
