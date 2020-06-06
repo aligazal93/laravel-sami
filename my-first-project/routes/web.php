@@ -26,22 +26,10 @@ Route::get('/', function () {
 //    return view('about');
 //});
 
-Route::get('/customers', function () {
-    $customers = [
-        "Ahmed sami",
-        'Ali Ghazal',
-        'Amr Diab',
-        'Ahmed Lotfy',
-
-    ];
-    return view('internals/customers' , [
-        'customers' => $customers,
-        ]);
-});
+Route::get('/customers', 'CustomersController@list');
 
 // Another way
 
 Route::view('/' , 'welcome');
-Route::view('/ali' , 'ali');
 Route::view('contact' , 'contact');
 Route::view('about' , 'about');
