@@ -30,6 +30,6 @@ Route::get('/customers', 'CustomersController@list');
 
 // Another way
 
-Route::view('/' , 'welcome');
+Route::view('/' , 'home');
 Route::view('contact' , 'contact');
 Route::view('about' , 'about');
