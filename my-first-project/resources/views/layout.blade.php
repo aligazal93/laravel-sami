@@ -3,26 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First Project</title>
+    <title>@yield('title' , 'Learn Laravel' )</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
     <body>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="about">About Us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="contact">Contact Us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="customers">Customers List</a>
-        </li>
-    </ul>
+
 
         <div class="container">
+            @include('nav')
             @yield('content')
         </div>
     </body>

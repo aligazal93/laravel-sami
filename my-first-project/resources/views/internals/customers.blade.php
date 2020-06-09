@@ -1,29 +1,38 @@
 @extends('layout')
+@section('title' , 'Customer List')
+
 @section('content')
-
-      <h1>Customers</h1>
-      <form action="customers" method="post" class='pb-3'">
-            @csrf
-            <div class="input-group">
-                  <input type="text" name="name" class="mb-2" placeholder="Customer Name" value="{{old('name')}}">
-                  {{$errors->first('name')}}
+      <div class="row">
+            <div class="col-sm-12">
+                  <h1>Customers List</h1>
             </div>
 
-            <div class="input-group">
-                  <input type="text" name="email" class="mb-2" placeholder="Email Address" value="{{old('email')}}">
-                  {{$errors->first('email')}}
+            <div class="col-sm-12">
+                  <form action="customers" method="post">
+                        @csrf
+                        <div class="form-group">
+                              <input type="text" name="name" placeholder="Customer Name" value="{{old('name')}}" class="input-group">
+                              {{$errors->first('name')}}
+                        </div>
+
+                        <div class="form-group">
+                              <input type="text" name="email" placeholder="Email Address" value="{{old('email')}}" class="input-group">
+                              {{$errors->first('email')}}
+                        </div>
+
+                        <div class="input-group">
+                              <button type="submit" class="btn btn-primary"> Add Customer </button>
+                        </div>
+                  </form>
             </div>
 
-            <div class="input-group">
-                  <button type="submit"> Add Customer </button>
+            <div class="col-sm-12">
+                  <hr>
+                  <ul>
+                        @foreach($customers as $customer)
+                              <li>{{$customer->name}} (<span class="text-muted">{{$customer->email}}</span> )</li>
+                        @endforeach
+                  </ul>
             </div>
-
-      </form>
-
-      <ul>
-            @foreach($customers as $customer)
-                  <li>{{$customer->name}} (<span class="text-muted">{{$customer->email}}</span> )</li>
-            @endforeach
-      </ul>
-
+      </div><!--container-->
 @endsection
