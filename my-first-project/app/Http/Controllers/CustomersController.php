@@ -18,4 +18,17 @@ class CustomersController extends Controller
 //        ]);
         return view('internals/customers' , compact('customers'));
     }
+
+    public function store() {
+
+//        dd(request('name'));
+
+        $customer = new Customer();
+        $customer -> name = request('name');
+        $customer->save();
+        return back();
+
+    }
+
+
 }
