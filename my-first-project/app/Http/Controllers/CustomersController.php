@@ -24,11 +24,12 @@ class CustomersController extends Controller
 //        dd(request('name'));
         $data = request()->validate([
            'name'=>'required|min:3',
-            'mail' => 'email:rfc,dns'
+            'email' => 'email:rfc,dns'
         ]);
 
         $customer = new Customer();
         $customer -> name = request('name');
+        $customer -> email = request('email');
         $customer->save();
         return back();
 
