@@ -34,3 +34,12 @@ Route::post('/customers', 'CustomersController@store');
 Route::view('/' , 'home');
 Route::view('contact' , 'contact');
 Route::view('about' , 'about');
+
+
+Route::get('/products', 'ProductController@index');
+Route::get('/products/create', 'ProductController@create');
+Route::get('/products/show/{id}', 'ProductController@show');
+
+Route::post('/products', 'ProductController@store');
+Route::get('/search', 'ProductController@search');
+

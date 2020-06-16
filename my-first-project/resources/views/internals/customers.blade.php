@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-sm-12">
-                  <form action="customers" method="post">
+                  <form action="customers" method="Post">
                         @csrf
                         <div class="form-group">
                               <input type="text" name="name" placeholder="Customer Name" value="{{old('name')}}" class="form-control">
@@ -28,6 +28,14 @@
                               </select>
                         </div>
 
+                        <div class="form-group">
+                              <select name="company_id" id="" class="form-control" >
+                                    @foreach ($companies as $company)
+                                          <option value="{{$company -> id}}"> {{$company -> name}}  </option>
+                                    @endforeach
+
+                              </select>
+                        </div>
 
                         <div class="input-group">
                               <button type="submit" class="btn btn-primary"> Add Customer </button>
@@ -40,7 +48,7 @@
                   <h3>Active Customer</h3>
                   <ul>
                         @foreach($activeCustomers as $activeCustomer)
-                              <li>{{$activeCustomer -> name}} (<span class="text-muted">{{$activeCustomer -> email}}</span> )</li>
+                              <li>{{$activeCustomer -> name}} (<span class="text-muted">{{$activeCustomer -> company -> name}}</span> )</li>
                         @endforeach
                   </ul>
             </div>
@@ -50,10 +58,23 @@
                   <h3>Inactive Customer</h3>
                   <ul>
                         @foreach($inactiveCustomers as $inactiveCustomer)
-                              <li>{{$inactiveCustomer -> name}} (<span class="text-muted">{{$inactiveCustomer -> email}}</span> )</li>
+                              <li>{{$inactiveCustomer -> name}} (<span class="text-muted">{{$inactiveCustomer -> company -> name}}</span> )</li>
                         @endforeach
                   </ul>
             </div>
 
+            <div class="row">
+                  <div class="col-sm-12">
+                        <hr>
+                        @foreach($companies as $company)
+                              <h3>Company Name : {{$company -> name}}</h3>
+                        <ul>
+                                    @foreach($company -> customers as $customer)
+                                          <li> {{ $customer -> name  }} </li>
+                                    @endforeach
+                        </ul>
+                        @endforeach
+                  </div>
+            </div>
       </div><!--container-->
 @endsection
