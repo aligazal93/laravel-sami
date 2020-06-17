@@ -3,22 +3,20 @@
 namespace App\Http\Controllers;
 use App\Company;
 use App\Customer;
-//use Faker\Provider\hr_HR\Company;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
-    public function list() {
+    public function index()
+    {
+        $customers = Customer::all();
+        return view('customers/index' , compact('customers'));
+    }
 
-        $activeCustomers= Customer::where('active' , 1)->get();
-        $inactiveCustomers= Customer::where('active' , 0)->get();
+    public function create()
+    {
         $companies = Company::all();
-
-//        $customers = Customer::all();
-
-//        dd($activeCustomers);
-
-        return view('internals/customers' , compact('activeCustomers','inactiveCustomers','companies'));
+        return view('customers/create', compact('companies'));
     }
 
     public function store() {
@@ -37,7 +35,7 @@ class CustomersController extends Controller
         $customer -> active = request('active');
         $customer -> company_id = request('company_id');
         $customer->save();
-        return back();
+        return redirect('customers');
 
     }
 
